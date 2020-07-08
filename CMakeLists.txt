@@ -147,7 +147,8 @@ if(LAR_PANDORA_CONTENT)
         DEPENDS PandoraSDK ${MONITORING_DEPENDENCY} Eigen3
         #GIT_REPOSITORY ${git_repository_root}/${LArContent_repository}
         GIT_REPOSITORY ${git_repository_root_temp}/${LArContent_repository} # Referes to fork
-        GIT_TAG ${LArContent_version}
+        #GIT_TAG ${LArContent_version} # Commented out here to refer to current state of forked LArContent
+        GIT_TAG "origin/master"
         CMAKE_ARGS ${COMMON_CMAKE_ARGS} ${MONITORING_CMAKE_ARGS} -DLAR_CONTENT_LIBRARY_NAME=${LAR_CONTENT_LIBRARY_NAME} -DEigen3_DIR=${CMAKE_CURRENT_SOURCE_DIR}/Eigen3-${Eigen3_version}/share/eigen3/cmake/
         PREFIX ${LAR_CONTENT_LIBRARY_NAME}-${LArContent_version}
         LIST_SEPARATOR %
