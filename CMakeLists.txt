@@ -31,12 +31,13 @@ set(LCContent_repository "LCContent.git")
 set(LArContent_repository "LArContent.git")
 set(ExampleContent_repository "ExampleContent.git")
 
-set(PandoraSDK_version "origin/master")
-set(PandoraMonitoring_version "origin/master")
-set(LArContent_version "origin/master")
-set(LCContent_version "origin/master")
-set(ExampleContent_version "origin/master")
+set(PandoraSDK_version "v03-03-03")
+set(PandoraMonitoring_version "v03-04-03")
+set(LArContent_version "v03_16_02")
+set(LCContent_version "v03-01-04")
+set(ExampleContent_version "v03-00-03")
 set(Eigen3_version "3.3.5")
+set(Torch_version "1.5.1")
 
 #-------------------------------------------------------------------------------------------------------------------------------------------
 # External project selection
@@ -128,6 +129,17 @@ if(LAR_PANDORA_CONTENT)
         CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_SOURCE_DIR}/Eigen3-${Eigen3_version}
         LIST_SEPARATOR %
         SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Eigen3-${Eigen3_version}
+    )
+    
+    ExternalProject_Add(Torch
+        URL "https://download.pytorch.org/libtorch/cpu/libtorch-cxx11-abi-shared-with-deps-1.5.1%2Bcpu.zip"
+        CMAKE_ARGS -DCMAKE_INSTALL_PREFIX=${CMAKE_CURRENT_SOURCE_DIR}/Torch-${Torch_version} -DCMAKE_PREFIX_PATH=${CMAKE_CURRENT_SOURCE_DIR}/Torch-${Torch_version}
+        PREFIX Torch-${Torch_version}
+        LIST_SEPARATOR %
+        SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Torch-${Torch_version}
+        CONFIGURE_COMMAND ""
+        BUILD_COMMAND     ""
+        INSTALL_COMMAND   ""    
     )
 
     ExternalProject_Add(${LAR_CONTENT_LIBRARY_NAME}
