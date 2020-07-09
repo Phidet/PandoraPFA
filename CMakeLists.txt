@@ -144,12 +144,12 @@ if(LAR_PANDORA_CONTENT)
     )
 
     ExternalProject_Add(${LAR_CONTENT_LIBRARY_NAME}
-        DEPENDS PandoraSDK ${MONITORING_DEPENDENCY} Eigen3
+        DEPENDS PandoraSDK ${MONITORING_DEPENDENCY} Eigen3 Torch
         #GIT_REPOSITORY ${git_repository_root}/${LArContent_repository}
         GIT_REPOSITORY ${git_repository_root_temp}/${LArContent_repository} # Referes to fork
         #GIT_TAG ${LArContent_version} # Commented out here to refer to current state of forked LArContent
         GIT_TAG "origin/master"
-        CMAKE_ARGS ${COMMON_CMAKE_ARGS} ${MONITORING_CMAKE_ARGS} -DLAR_CONTENT_LIBRARY_NAME=${LAR_CONTENT_LIBRARY_NAME} -DEigen3_DIR=${CMAKE_CURRENT_SOURCE_DIR}/Eigen3-${Eigen3_version}/share/eigen3/cmake/
+        CMAKE_ARGS ${COMMON_CMAKE_ARGS} ${MONITORING_CMAKE_ARGS} -DLAR_CONTENT_LIBRARY_NAME=${LAR_CONTENT_LIBRARY_NAME} -DEigen3_DIR=${CMAKE_CURRENT_SOURCE_DIR}/Eigen3-${Eigen3_version}/share/eigen3/cmake/ -DTorch_DIR=${CMAKE_CURRENT_SOURCE_DIR}/Torch-${Torch_version}/share/cmake
         PREFIX ${LAR_CONTENT_LIBRARY_NAME}-${LArContent_version}
         LIST_SEPARATOR %
         SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/${LAR_CONTENT_LIBRARY_NAME}-${LArContent_version}
