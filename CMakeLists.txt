@@ -140,7 +140,9 @@ if(LAR_PANDORA_CONTENT)
         SOURCE_DIR ${CMAKE_CURRENT_SOURCE_DIR}/Torch-${Torch_version}
         CONFIGURE_COMMAND ""
         BUILD_COMMAND     ""
-        INSTALL_COMMAND   ""    
+        INSTALL_COMMAND   ""
+        #UPDATE_COMMAND ""
+        #UPDATE_DISCONNECTED True
     )
 
     ExternalProject_Add(${LAR_CONTENT_LIBRARY_NAME}
